@@ -31,15 +31,20 @@
 						<p v-else>En rupture de stock</p>
 						<div>
 							<label for="add-item-quantity">Quantité :</label>
-							<input id="add-item-quantity" type="number" v-model="quantity"/>
-							<button @click="addToShoppingCart">Ajouter au panier d'achat</button>
+							<input 
+							id="add-item-quantity"
+							type="number"
+							v-model.number="item.quantity"/>
+							<button @click="addToShoppingCart(item.quantity)">
+								Ajouter au panier d'achat
+							</button>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			<aside class="shopping-cart">
-				<h2>Panier d'achat: 0 articles</h2>
+				<h2>Panier d'achat:{{ panier }} articles</h2>
 			</aside>
 
 			<h2>Contactez nous</h2>
@@ -67,6 +72,7 @@
 					email: "hello@cafewithavue.bakery",
 					phone: "01 88 88 88 88",
 					restaurantName: "La belle vue",
+					panier: 0,
 					simpleMenu: [
 						{
 							name: "Croissant",
@@ -102,24 +108,11 @@
 						const currentYear = new Date().getFullYear()
 						return `Copyright ${this.restaurantName} ${currentYear}`
 					}
-					// addToShoppingCart() {
-					// 	let total = 0;
-					// 	this.simpleMenu.forEach(item => {
-					// 		total+=item.quantity
-					// 	})
-					// 	return this.quantity;
-					// 	// console.log("quantite ajoutée" + this.quantity)
-					// 	// let quantity = 0;
-					// 	// return quantity+=this.quantity;
-					// 	// return this.quantity;
-					// }
 				},
 				methods: {
-					addToShoppingCart() {
-						console.log("quantite ajoutée" + this.quantity)
-						let total = 0;
-						return total+=this.quantity;
-						// return this.quantity;
+					addToShoppingCart(amount) {
+						this.panier+=amount;
+						console.log(amount)
 					}
 				}
 			})
