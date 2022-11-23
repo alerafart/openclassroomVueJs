@@ -13,8 +13,8 @@ export default {
 			<p v-if="inStock">En stock</p>
 			<p v-else>En rupture de stock</p>
 			<div>
-				<label for="add-item-quantity">Quantité : {{ quantity }}</label>
-				<input :value="quantity" @input="$emit('input', $event.target.quantity)" id="add-item-quantity" type="number" />
+				<label for="add-item-quantity">Quantité : </label>
+				<input :v-model="quantity" @input="$emit('input', $event.target.quantity)" id="add-item-quantity" type="number" />
 				<button @click="addToShoppingCart(quantity)">
 					Ajouter au panier
 				</button>

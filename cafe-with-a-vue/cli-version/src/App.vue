@@ -94,6 +94,7 @@ export default {
 	},
 	methods: {
 		addToShoppingCart(amount) {
+			// console.log(this.shoppingCart += amount)
 			this.shoppingCart += amount
 		}
 	}
